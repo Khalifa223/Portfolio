@@ -1,21 +1,21 @@
 {
-  "name": "John Doe - Développeur Full Stack",
-  "short_name": "John.dev",
-  "description": "Portfolio de John Doe, Développeur Full Stack spécialisé en Angular, Node.js, Python, Django et Flutter.",
+  "name": "Fatoma N’DAOU - Développeur Full Stack",
+  "short_name": "Fatoma.dev",
+  "description": "Portfolio de Fatoma N’DAOU, Développeur Full Stack spécialisé en Front-end, Back-end, Base de données et API.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0F172A",
   "theme_color": "#3B82F6",
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "/fatoma.jpg",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/jpeg"
     },
     {
-      "src": "/icon-512.png",
+      "src": "/fatoma.jpg",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/jpeg"
     }
   ]
 }

@@ -15,7 +15,9 @@ import {
   Phone,
   CheckCircle2,
   AlertCircle,
-  Globe,
+  Copy,
+  Check,
+  Sparkles,
 } from "lucide-react";
 import { Icons } from "@/components/ui/icons";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -35,55 +37,42 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-const contactInfo = [
+const contactItems = [
   {
-    icon: <Mail className="w-5 h-5" />,
-    label: "Email",
+    icon: <Mail className="w-5 h-5 text-amber-400" />,
+    label: "Email direct",
     value: siteConfig.contact.email,
     href: `mailto:${siteConfig.contact.email}`,
   },
   {
-    icon: <Phone className="w-5 h-5" />,
-    label: "Téléphone",
+    icon: <Phone className="w-5 h-5 text-emerald-400" />,
+    label: "Téléphone & WhatsApp",
     value: siteConfig.contact.phone,
     href: `tel:${siteConfig.contact.phone.replace(/\s/g, "")}`,
   },
   {
-    icon: <MapPin className="w-5 h-5" />,
-    label: "Localisation",
-    value: siteConfig.contact.location,
+    icon: <MapPin className="w-5 h-5 text-rose-400" />,
+    label: "Localisation principale",
+    value: `${siteConfig.contact.location}, Mali`,
   },
   {
-    icon: <Globe className="w-5 h-5" />,
-    label: "Portfolio",
-    value: siteConfig.url,
-    href: siteConfig.url,
-  },
-];
-
-const socialLinks = [
-  {
-    icon: <Icons.github className="h-5 w-5" />,
+    icon: <Icons.github className="w-5 h-5 text-indigo-400" />,
+    label: "Profil GitHub",
+    value: "github.com/Khalifa223",
     href: siteConfig.links.github,
-    label: "GitHub",
   },
   {
-    icon: <Icons.linkedin className="h-5 w-5" />,
+    icon: <Icons.linkedin className="w-5 h-5 text-sky-400" />,
+    label: "Profil LinkedIn",
+    value: "linkedin.com/in/fatoma-n-daou",
     href: siteConfig.links.linkedin,
-    label: "LinkedIn",
-  },
-  {
-    icon: <Icons.twitter className="h-5 w-5" />,
-    href: siteConfig.links.twitter,
-    label: "X (Twitter)",
   },
 ];
 
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
   const {
     register,
@@ -97,161 +86,186 @@ export function Contact() {
   async function onSubmit(values: FormData) {
     setIsSubmitting(true);
     setSubmitStatus("idle");
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1400));
     console.log(values);
     setIsSubmitting(false);
     setSubmitStatus("success");
     reset();
-    setTimeout(() => setSubmitStatus("idle"), 5000);
+    setTimeout(() => setSubmitStatus("idle"), 6000);
   }
 
+  const copyToClipboard = (text: string, index: number) => {
+    navigator.clipboard.writeText(text);
+    setCopiedIndex(index);
+    setTimeout(() => setCopiedIndex(null), 2500);
+  };
+
   return (
-    <section id="contact" className="py-24">
-      <div className="container mx-auto px-4 md:px-8">
+    <section id="contact" className="py-24 relative overflow-hidden">
+      {/* Background ambient lighting */}
+      <div className="absolute bottom-0 right-1/3 w-[500px] h-[350px] bg-amber-500/5 blur-[140px] rounded-full pointer-events-none" />
+
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
         <SectionHeading
-          title="Me Contacter"
-          subtitle="Un projet en tête ? N'hésitez pas à m'envoyer un message, je vous répondrai dans les plus brefs délais."
+          eyebrow="Contact & Collaboration"
+          title="Discutons de Votre Projet"
+          subtitle="Une opportunité en entreprise, un projet applicatif ou un besoin technique ? Je suis à votre écoute."
         />
 
-        <div className="grid md:grid-cols-5 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 max-w-6xl mx-auto">
+          {/* Left Column: Direct Info Cards (5 cols) */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -25 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="md:col-span-2 space-y-8"
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-5 flex flex-col justify-between gap-6"
           >
-            <div className="space-y-6">
-              {contactInfo.map((item, i) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 + i * 0.1 }}
-                  className="flex items-start gap-4 group"
-                >
-                  <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-sm text-muted-foreground mb-0.5">
-                      {item.label}
-                    </h4>
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        target={
-                          item.href.startsWith("http") ? "_blank" : undefined
-                        }
-                        rel={
-                          item.href.startsWith("http")
-                            ? "noopener noreferrer"
-                            : undefined
-                        }
-                        className="text-foreground hover:text-primary transition-colors"
+            <div>
+              <div className="p-6 sm:p-8 rounded-3xl bg-card/60 border border-white/10 backdrop-blur-xl shadow-xl mb-6">
+                <span className="text-xs uppercase tracking-widest text-amber-400 font-bold mb-2 block">
+                  Coordonnées directes
+                </span>
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3">
+                  Restons en contact
+                </h3>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  Que ce soit pour un entretien, une offre de poste ou une collaboration, vous pouvez me joindre directement via ces canaux.
+                </p>
+
+                <div className="space-y-4 mt-6">
+                  {contactItems.map((item, idx) => (
+                    <div
+                      key={item.label}
+                      className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-amber-500/30 transition-all flex items-center justify-between gap-3 group"
+                    >
+                      <div className="flex items-center gap-3 overflow-hidden">
+                        <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                          {item.icon}
+                        </div>
+                        <div className="overflow-hidden">
+                          <div className="text-[11px] font-medium text-muted-foreground">
+                            {item.label}
+                          </div>
+                          {item.href ? (
+                            <a
+                              href={item.href}
+                              target={item.href.startsWith("http") ? "_blank" : undefined}
+                              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                              className="text-xs sm:text-sm font-semibold text-foreground hover:text-amber-400 transition-colors truncate block"
+                            >
+                              {item.value}
+                            </a>
+                          ) : (
+                            <span className="text-xs sm:text-sm font-semibold text-foreground truncate block">
+                              {item.value}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={() => copyToClipboard(item.value, idx)}
+                        className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-muted-foreground hover:text-foreground transition-colors shrink-0"
+                        title="Copier"
+                        aria-label="Copier"
                       >
-                        {item.value}
-                      </a>
-                    ) : (
-                      <p className="text-foreground">{item.value}</p>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
+                        {copiedIndex === idx ? (
+                          <Check className="w-4 h-4 text-emerald-400" />
+                        ) : (
+                          <Copy className="w-4 h-4" />
+                        )}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            <div className="pt-6 border-t border-border/50">
-              <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wider mb-4">
-                Réseaux sociaux
-              </h4>
-              <div className="flex items-center gap-3">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-11 h-11 rounded-xl border border-border/50 bg-card/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
-                    aria-label={link.label}
-                  >
-                    {link.icon}
-                  </a>
-                ))}
-              </div>
+            {/* Quick response note */}
+            <div className="p-5 rounded-2xl bg-amber-500/5 border border-amber-500/20 backdrop-blur-md flex items-center gap-3">
+              <Sparkles className="w-5 h-5 text-amber-400 shrink-0" />
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Réponse garantie sous <strong>24 à 48 heures</strong>. Disponible pour des missions à Bamako et à distance.
+              </p>
             </div>
           </motion.div>
 
+          {/* Right Column: Contact Form (7 cols) */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 25 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="md:col-span-3"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="lg:col-span-7"
           >
-            <div className="p-6 md:p-8 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm shadow-sm">
+            <div className="p-6 sm:p-10 rounded-3xl border border-white/10 bg-card/60 backdrop-blur-xl shadow-2xl">
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                <div className="grid md:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="text-sm font-medium mb-2 block">
-                      Nom <span className="text-destructive">*</span>
+                    <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 block">
+                      Votre nom <span className="text-amber-500">*</span>
                     </label>
                     <Input
-                      placeholder="Votre nom"
-                      className="bg-background/50 border-border/50 focus:border-primary"
+                      placeholder="Ex: Moussa Diarra"
+                      className="h-11 rounded-xl bg-white/[0.03] border-white/10 text-sm focus:border-amber-500/50"
                       {...register("name")}
                     />
                     {errors.name && (
-                      <p className="text-destructive text-xs mt-1.5 flex items-center gap-1">
+                      <p className="text-rose-400 text-xs mt-1.5 flex items-center gap-1">
                         <AlertCircle className="w-3 h-3" />
                         {errors.name.message}
                       </p>
                     )}
                   </div>
+
                   <div>
-                    <label className="text-sm font-medium mb-2 block">
-                      Email <span className="text-destructive">*</span>
+                    <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 block">
+                      Votre adresse email <span className="text-amber-500">*</span>
                     </label>
                     <Input
-                      placeholder="votre@email.com"
-                      className="bg-background/50 border-border/50 focus:border-primary"
+                      placeholder="nom@entreprise.com"
+                      type="email"
+                      className="h-11 rounded-xl bg-white/[0.03] border-white/10 text-sm focus:border-amber-500/50"
                       {...register("email")}
                     />
                     {errors.email && (
-                      <p className="text-destructive text-xs mt-1.5 flex items-center gap-1">
+                      <p className="text-rose-400 text-xs mt-1.5 flex items-center gap-1">
                         <AlertCircle className="w-3 h-3" />
                         {errors.email.message}
                       </p>
                     )}
                   </div>
                 </div>
+
                 <div>
-                  <label className="text-sm font-medium mb-2 block">
-                    Sujet <span className="text-destructive">*</span>
+                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 block">
+                    Objet de votre message <span className="text-amber-500">*</span>
                   </label>
                   <Input
-                    placeholder="Demande de devis, collaboration, question..."
-                    className="bg-background/50 border-border/50 focus:border-primary"
+                    placeholder="Opportunité de poste, collaboration technique, devis..."
+                    className="h-11 rounded-xl bg-white/[0.03] border-white/10 text-sm focus:border-amber-500/50"
                     {...register("subject")}
                   />
                   {errors.subject && (
-                    <p className="text-destructive text-xs mt-1.5 flex items-center gap-1">
+                    <p className="text-rose-400 text-xs mt-1.5 flex items-center gap-1">
                       <AlertCircle className="w-3 h-3" />
                       {errors.subject.message}
                     </p>
                   )}
                 </div>
+
                 <div>
-                  <label className="text-sm font-medium mb-2 block">
-                    Message <span className="text-destructive">*</span>
+                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 block">
+                    Votre message <span className="text-amber-500">*</span>
                   </label>
                   <Textarea
-                    placeholder="Décrivez votre projet ou votre besoin..."
-                    className="min-h-[150px] resize-none bg-background/50 border-border/50 focus:border-primary"
+                    placeholder="Décrivez votre besoin, les technologies souhaitées ou les détails du poste..."
+                    className="min-h-[140px] resize-none rounded-xl bg-white/[0.03] border-white/10 text-sm focus:border-amber-500/50"
                     {...register("message")}
                   />
                   {errors.message && (
-                    <p className="text-destructive text-xs mt-1.5 flex items-center gap-1">
+                    <p className="text-rose-400 text-xs mt-1.5 flex items-center gap-1">
                       <AlertCircle className="w-3 h-3" />
                       {errors.message.message}
                     </p>
@@ -261,48 +275,41 @@ export function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full md:w-auto inline-flex items-center justify-center h-12 px-8 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="w-full inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 font-bold text-sm shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.01] transition-all disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <>
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{
-                          repeat: Infinity,
-                          duration: 1,
-                          ease: "linear",
-                        }}
-                        className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full mr-2"
-                      />
-                      Envoi en cours...
+                      <div className="w-4 h-4 border-2 border-slate-950/30 border-t-slate-950 rounded-full animate-spin" />
+                      <span>Envoi en cours...</span>
                     </>
                   ) : (
                     <>
-                      Envoyer le message
-                      <Send className="ml-2 w-4 h-4" />
+                      <span>Envoyer le message</span>
+                      <Send className="w-4 h-4" />
                     </>
                   )}
                 </button>
 
                 {submitStatus === "success" && (
-                  <motion.p
+                  <motion.div
                     initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-emerald-500 text-sm flex items-center gap-2"
+                    className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm flex items-center gap-2"
                   >
-                    <CheckCircle2 className="w-4 h-4" />
-                    Votre message a été envoyé avec succès !
-                  </motion.p>
+                    <CheckCircle2 className="w-4 h-4 shrink-0" />
+                    <span>Votre message a été envoyé avec succès ! Je reviens vers vous rapidement.</span>
+                  </motion.div>
                 )}
+
                 {submitStatus === "error" && (
-                  <motion.p
+                  <motion.div
                     initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-destructive text-sm flex items-center gap-2"
+                    className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs sm:text-sm flex items-center gap-2"
                   >
-                    <AlertCircle className="w-4 h-4" />
-                    Une erreur est survenue. Veuillez réessayer.
-                  </motion.p>
+                    <AlertCircle className="w-4 h-4 shrink-0" />
+                    <span>Une erreur est survenue lors de l&apos;envoi. Veuillez réessayer.</span>
+                  </motion.div>
                 )}
               </form>
             </div>

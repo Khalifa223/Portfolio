@@ -2,171 +2,109 @@
 
 import Link from "next/link";
 import { siteConfig } from "@/data/siteConfig";
-import { Mail, Heart } from "lucide-react";
+import { Mail, ArrowUp } from "lucide-react";
 import { Icons } from "@/components/ui/icons";
-import { motion } from "framer-motion";
 
 const footerNavLinks = [
+  { href: "#hero", label: "Accueil" },
   { href: "#about", label: "À propos" },
   { href: "#skills", label: "Compétences" },
-  { href: "#projects", label: "Projets" },
-  { href: "#experience", label: "Expériences" },
   { href: "#services", label: "Services" },
-  { href: "#blog", label: "Blog" },
+  { href: "#projects", label: "Projets" },
+  { href: "#experience", label: "Parcours" },
   { href: "#contact", label: "Contact" },
 ];
 
 const socialLinks = [
   {
-    icon: <Icons.github className="h-5 w-5" />,
+    icon: <Icons.github className="h-4 w-4" />,
     href: siteConfig.links.github,
     label: "GitHub",
   },
   {
-    icon: <Icons.linkedin className="h-5 w-5" />,
+    icon: <Icons.linkedin className="h-4 w-4" />,
     href: siteConfig.links.linkedin,
     label: "LinkedIn",
   },
   {
-    icon: <Icons.twitter className="h-5 w-5" />,
-    href: siteConfig.links.twitter,
-    label: "X (Twitter)",
-  },
-  {
-    icon: <Mail className="h-5 w-5" />,
+    icon: <Mail className="h-4 w-4" />,
     href: `mailto:${siteConfig.contact.email}`,
     label: "Email",
   },
 ];
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
-    <footer className="border-t border-border/50 bg-card/30">
-      <div className="container mx-auto px-4 md:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          <div className="lg:col-span-1">
+    <footer className="border-t border-white/10 bg-card/40 backdrop-blur-xl relative">
+      <div className="container mx-auto px-4 md:px-8 py-14">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-white/5">
+          {/* Brand */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <Link
               href="/"
-              className="font-bold text-xl tracking-tighter text-primary mb-4 block"
+              className="font-bold text-xl tracking-tight text-foreground flex items-center gap-1.5 mb-2 group"
             >
-              {siteConfig.name.split(" ")[0]}
-              <span className="text-foreground">.dev</span>
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shadow-sm shadow-amber-400 group-hover:scale-125 transition-transform" />
+              <span>{siteConfig.name.split(" ")[0]}</span>
+              <span className="text-amber-500 font-semibold">.dev</span>
             </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              Développeur Full Stack passionné, spécialisé dans la création
-              d&apos;applications web et mobiles modernes et performantes.
+            <p className="text-xs text-muted-foreground max-w-sm">
+              Développeur Full Stack Web & Solutions de Données basé à Bamako (Magnambougou).
             </p>
-            <div className="flex items-center gap-3">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl border border-border/50 bg-background/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all duration-300"
-                  aria-label={link.label}
-                >
-                  {link.icon}
-                </a>
-              ))}
-            </div>
           </div>
 
-          <div>
-            <h3 className="font-bold mb-4 text-sm uppercase tracking-wider">
-              Navigation
-            </h3>
-            <ul className="space-y-2.5 text-sm">
-              {footerNavLinks.slice(0, 4).map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Nav Links */}
+          <div className="flex flex-wrap justify-center gap-2">
+            {footerNavLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="px-3 py-1.5 rounded-full text-xs text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
 
-          <div>
-            <h3 className="font-bold mb-4 text-sm uppercase tracking-wider">
-              Liens utiles
-            </h3>
-            <ul className="space-y-2.5 text-sm">
-              {footerNavLinks.slice(4).map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <a
-                  href="/cv.pdf"
-                  target="_blank"
-                  download
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Télécharger le CV
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Social Icons & Back to Top */}
+          <div className="flex items-center gap-2.5">
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:text-amber-400 hover:border-amber-500/40 hover:scale-110 transition-all"
+                aria-label={link.label}
+              >
+                {link.icon}
+              </a>
+            ))}
 
-          <div>
-            <h3 className="font-bold mb-4 text-sm uppercase tracking-wider">
-              Contact
-            </h3>
-            <ul className="space-y-2.5 text-sm">
-              <li>
-                <a
-                  href={`mailto:${siteConfig.contact.email}`}
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {siteConfig.contact.email}
-                </a>
-              </li>
-              <li className="text-muted-foreground">
-                {siteConfig.contact.phone}
-              </li>
-              <li className="text-muted-foreground">
-                {siteConfig.contact.location}
-              </li>
-            </ul>
+            <button
+              onClick={scrollToTop}
+              className="w-9 h-9 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 hover:bg-amber-500 hover:text-slate-950 hover:scale-110 transition-all ml-1"
+              title="Retour en haut"
+              aria-label="Retour en haut"
+            >
+              <ArrowUp className="w-4 h-4" />
+            </button>
           </div>
         </div>
 
-        <div className="border-t border-border/50 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-muted-foreground gap-4">
-          <p className="flex items-center gap-1">
-            © {currentYear} {siteConfig.name}. Conçu avec
-            <motion.span
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
-            >
-              <Heart className="w-4 h-4 text-rose-500 fill-rose-500" />
-            </motion.span>
-            et beaucoup de café.
-          </p>
-          <div className="flex gap-6">
-            <Link
-              href="#"
-              className="hover:text-primary transition-colors text-xs"
-            >
-              Mentions légales
-            </Link>
-            <Link
-              href="#"
-              className="hover:text-primary transition-colors text-xs"
-            >
-              Politique de confidentialité
-            </Link>
+        {/* Bottom copyright */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground text-center sm:text-left">
+          <div>
+            © {new Date().getFullYear()} {siteConfig.name}. Tous droits réservés.
+          </div>
+          <div className="flex items-center gap-1.5 text-xs">
+            <span>Conçu avec rigueur & passion</span>
+            <span className="text-amber-500">•</span>
+            <span>Bamako, Mali</span>
           </div>
         </div>
       </div>

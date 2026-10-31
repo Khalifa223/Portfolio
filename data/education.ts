@@ -10,38 +10,20 @@ export interface Education {
 export const educations: Education[] = [
   {
     id: "1",
-    degree: "Master Ingénierie Logicielle",
-    school: "École Supérieure d'Informatique",
-    period: "2016 - 2018",
+    degree: "Licence en Génie Informatique",
+    school: "Institut des Sciences Appliquées (ISA)",
+    period: "Diplômé en Avril 2025",
     description:
-      "Spécialisation en architecture logicielle, bases de données avancées, sécurité informatique et gestion de projets agiles. Mémoire sur l'optimisation des performances des APIs REST.",
+      "Formation d'ingénierie et de licence en informatique : architecture logicielle, génie logiciel, algorithmique avancée, bases de données, sécurité informatique et développement web moderne.",
     type: "diploma",
   },
   {
     id: "2",
-    degree: "Licence Informatique",
-    school: "Université des Sciences",
-    period: "2013 - 2016",
+    degree: "Baccalauréat en Sciences Physiques",
+    school: "Lycée Kankou Moussa",
+    period: "Octobre 2020",
     description:
-      "Fondamentaux de l'informatique : algorithmique, programmation orientée objet, structures de données, réseaux et systèmes d'exploitation.",
+      "Baccalauréat en sciences physiques : socle rigoureux en mathématiques appliquées, physique et analyse logique de problèmes complexes.",
     type: "diploma",
-  },
-  {
-    id: "3",
-    degree: "Bootcamp Flutter Mobile",
-    school: "Tech Academy",
-    period: "2019",
-    description:
-      "Formation intensive de 12 semaines sur le développement d'applications mobiles cross-platform avec Flutter, Dart et Firebase.",
-    type: "bootcamp",
-  },
-  {
-    id: "4",
-    degree: "Certifications AWS Cloud",
-    school: "Amazon Web Services",
-    period: "2021",
-    description:
-      "Certification AWS Cloud Practitioner et AWS Solutions Architect Associate. Maîtrise des services cloud : EC2, S3, Lambda, RDS et CloudFront.",
-    type: "certification",
   },
 ];

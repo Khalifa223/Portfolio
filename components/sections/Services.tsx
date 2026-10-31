@@ -3,39 +3,44 @@
 import { motion } from "framer-motion";
 import { services } from "@/data/services";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { ArrowUpRight } from "lucide-react";
 
 export function Services() {
   return (
-    <section id="services" className="py-24">
-      <div className="container mx-auto px-4 md:px-8">
+    <section id="services" className="py-24 relative overflow-hidden">
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
         <SectionHeading
-          title="Mes Services"
-          subtitle="Des solutions sur mesure pour répondre à vos besoins numériques, de la conception à la mise en production."
+          eyebrow="Services"
+          title="Prestations & Solutions Logicielles"
+          subtitle="Des interventions ciblées ou complètes pour transformer vos ambitions en applications performantes."
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                whileHover={{ y: -5 }}
-                className="group relative p-6 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 overflow-hidden"
+                transition={{ duration: 0.4, delay: index * 0.06 }}
+                className="group relative p-7 rounded-3xl border border-white/10 bg-card/50 backdrop-blur-xl hover:border-amber-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-black/40 hover:-translate-y-1 overflow-hidden flex flex-col justify-between"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Subtle top glow line */}
+                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-amber-500/0 to-transparent group-hover:via-amber-500/50 transition-all duration-500" />
 
-                <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center text-primary mb-5 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/10 transition-all duration-300">
-                    <Icon className="w-7 h-7" />
+                <div>
+                  <div className="w-13 h-13 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-amber-400 mb-5 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-slate-950 transition-all duration-300 shadow-md">
+                    <Icon className="w-6 h-6 stroke-[2]" />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                    {service.title}
+
+                  <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-amber-400 transition-colors flex items-center justify-between">
+                    <span>{service.title}</span>
+                    <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-amber-400 transition-colors opacity-0 group-hover:opacity-100" />
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed text-sm">
+
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                     {service.description}
                   </p>
                 </div>

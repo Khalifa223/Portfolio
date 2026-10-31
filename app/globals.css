@@ -50,45 +50,45 @@
 
 :root {
   --background: #f8fafc;
-  --foreground: #0f172a;
+  --foreground: #090d16;
   --card: #ffffff;
-  --card-foreground: #0f172a;
+  --card-foreground: #090d16;
   --popover: #ffffff;
-  --popover-foreground: #0f172a;
-  --primary: #3b82f6;
+  --popover-foreground: #090d16;
+  --primary: #d97706;
   --primary-foreground: #ffffff;
-  --secondary: #8b5cf6;
+  --secondary: #3b82f6;
   --secondary-foreground: #ffffff;
   --muted: #f1f5f9;
   --muted-foreground: #64748b;
-  --accent: #06b6d4;
+  --accent: #0284c7;
   --accent-foreground: #ffffff;
   --destructive: #ef4444;
   --border: #e2e8f0;
   --input: #e2e8f0;
-  --ring: #3b82f6;
-  --radius: 0.75rem;
+  --ring: #d97706;
+  --radius: 1rem;
 }
 
 .dark {
-  --background: #0f172a;
+  --background: #080c15;
   --foreground: #f8fafc;
-  --card: #1e293b;
+  --card: #0f1626;
   --card-foreground: #f8fafc;
-  --popover: #1e293b;
+  --popover: #0f1626;
   --popover-foreground: #f8fafc;
-  --primary: #3b82f6;
-  --primary-foreground: #ffffff;
-  --secondary: #8b5cf6;
+  --primary: #f59e0b;
+  --primary-foreground: #080c15;
+  --secondary: #6366f1;
   --secondary-foreground: #ffffff;
-  --muted: #1e293b;
+  --muted: #141c2e;
   --muted-foreground: #94a3b8;
-  --accent: #06b6d4;
-  --accent-foreground: #ffffff;
+  --accent: #38bdf8;
+  --accent-foreground: #080c15;
   --destructive: #ef4444;
-  --border: #1e293b;
-  --input: #1e293b;
-  --ring: #3b82f6;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #f59e0b;
 }
 
 @layer base {
@@ -97,18 +97,18 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased selection:bg-amber-500/20 selection:text-amber-300;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
   html {
     scroll-behavior: smooth;
     scrollbar-width: thin;
-    scrollbar-color: rgba(59, 130, 246, 0.3) transparent;
+    scrollbar-color: rgba(245, 158, 11, 0.3) transparent;
   }
 
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   ::-webkit-scrollbar-track {
@@ -116,22 +116,57 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(59, 130, 246, 0.3);
-    border-radius: 4px;
+    background: rgba(245, 158, 11, 0.25);
+    border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(59, 130, 246, 0.5);
-  }
-
-  ::selection {
-    background: rgba(59, 130, 246, 0.2);
-    color: inherit;
+    background: rgba(245, 158, 11, 0.5);
   }
 
   :focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
-    border-radius: 4px;
+    border-radius: 6px;
   }
+}
+
+/* Premium Glass & Lighting utilities */
+.glass-panel {
+  background: rgba(15, 22, 38, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(15, 22, 38, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+}
+
+.glass-card:hover {
+  border-color: rgba(245, 158, 11, 0.25);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-silver {
+  background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glow-amber {
+  box-shadow: 0 0 40px -10px rgba(245, 158, 11, 0.3);
+}
+
+.glow-blue {
+  box-shadow: 0 0 40px -10px rgba(56, 189, 248, 0.25);
 }

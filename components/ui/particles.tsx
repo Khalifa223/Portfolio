@@ -8,6 +8,7 @@ interface Particle {
   vx: number;
   vy: number;
   size: number;
+  color: string;
 }
 
 export function Particles({ className = "" }: { className?: string }) {
@@ -16,14 +17,18 @@ export function Particles({ className = "" }: { className?: string }) {
   const animationRef = useRef<number>(0);
 
   const initParticles = useCallback((width: number, height: number) => {
-    const count = Math.min(Math.floor((width * height) / 15000), 80);
-    particlesRef.current = Array.from({ length: count }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-      size: Math.random() * 2 + 1,
-    }));
+    const count = Math.min(Math.floor((width * height) / 16000), 75);
+    particlesRef.current = Array.from({ length: count }, () => {
+      const isGold = Math.random() > 0.4;
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        size: Math.random() * 1.8 + 0.8,
+        color: isGold ? "rgba(245, 158, 11, 0.25)" : "rgba(56, 189, 248, 0.2)",
+      };
+    });
   }, []);
 
   useEffect(() => {
@@ -53,7 +58,7 @@ export function Particles({ className = "" }: { className?: string }) {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(59, 130, 246, 0.3)";
+        ctx.fillStyle = p.color;
         ctx.fill();
       });
 
@@ -62,11 +67,11 @@ export function Particles({ className = "" }: { className?: string }) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
+          if (dist < 110) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(59, 130, 246, ${0.15 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(245, 158, 11, ${0.12 * (1 - dist / 110)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }

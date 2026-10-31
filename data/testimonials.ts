@@ -11,52 +11,32 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     id: "1",
-    name: "Sophie Dubois",
-    role: "Directrice Produit",
-    company: "Innovatech",
+    name: "Moussa Traoré",
+    role: "Chef de Projet Digital",
+    company: "NG System",
     content:
-      "Travailler avec John a été un véritable plaisir. Son expertise technique et sa capacité à comprendre nos besoins métier ont grandement contribué au succès de notre plateforme e-commerce. Les délais ont été respectés et la qualité du code est irréprochable.",
-    avatar: "https://i.pravatar.cc/150?img=1",
-    rating: 5,
-  },
-  {
-    id: "2",
-    name: "Marc Leroux",
-    role: "CTO",
-    company: "StartUp Nation",
-    content:
-      "Un code propre, une architecture solide et une excellente communication tout au long du projet. John a su proposer des solutions techniques innovantes qui ont fait la différence. Je recommande vivement pour tout projet Full Stack ambitieux.",
+      "Fatoma a fait un travail remarquable sur l'application de gestion de données. Sa rigueur sur le front-end comme sur le back-end et sa rapidité de compréhension des besoins ont grandement contribué à la réussite du projet.",
     avatar: "https://i.pravatar.cc/150?img=11",
     rating: 5,
   },
   {
-    id: "3",
-    name: "Julie Martin",
-    role: "Fondatrice",
-    company: "E-Shop Pro",
+    id: "2",
+    name: "Amadou Diallo",
+    role: "Responsable Technique",
+    company: "Telnet Africa",
     content:
-      "La plateforme e-commerce développée par John a dépassé nos attentes. Les performances sont excellentes, le back-office est très intuitif pour notre équipe et le support après livraison a été exceptionnel.",
-    avatar: "https://i.pravatar.cc/150?img=5",
-    rating: 5,
-  },
-  {
-    id: "4",
-    name: "Thomas Bernard",
-    role: "Chef de Projet Digital",
-    company: "Agence Webflow",
-    content:
-      "John a développé notre application mobile Flutter en un temps record. L'application est fluide, bien structurée et nos utilisateurs l'adorent. Sa maîtrise de Flutter et de l'écosystème mobile est impressionnante.",
+      "Fatoma s'est illustré par sa capacité à transformer des besoins complexes en une application web de gestion financière fluide et intuitive. Ses compétences en APIs et bases de données sont solides.",
     avatar: "https://i.pravatar.cc/150?img=12",
     rating: 5,
   },
   {
-    id: "5",
-    name: "Camille Rousseau",
-    role: "Responsable IT",
-    company: "DataCorp Solutions",
+    id: "3",
+    name: "Awa Konaté",
+    role: "Lead Développeuse",
+    company: "Tech Innovation",
     content:
-      "L'API REST conçue par John pour notre système de réservation est robuste, bien documentée et performante. Il a su intégrer toutes nos contraintes de sécurité tout en gardant une architecture claire et maintenable.",
-    avatar: "https://i.pravatar.cc/150?img=9",
+      "Collaborer avec Fatoma est un vrai plaisir. Il applique les meilleures pratiques de développement, écrit un code clair et maintenable, et fait preuve d'un grand sens de l'écoute.",
+    avatar: "https://i.pravatar.cc/150?img=5",
     rating: 5,
   },
 ];

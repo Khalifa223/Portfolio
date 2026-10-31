@@ -1,55 +1,41 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { siteConfig } from "@/data/siteConfig";
 
-const siteUrl = "https://johndoe.dev";
+const siteUrl = siteConfig.url;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "John Doe - Développeur Full Stack | Frontend, Backend & Mobile",
-    template: "%s | John Doe",
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
   },
-  description:
-    "Portfolio de John Doe, Développeur Full Stack spécialisé en Angular, Node.js, Python, Django et Flutter. Création d'applications web et mobiles modernes, performantes et sécurisées.",
-  keywords: [
-    "Développeur Full Stack",
-    "Développeur Frontend",
-    "Développeur Backend",
-    "Développeur Flutter",
-    "Développeur Django",
-    "Développeur Node.js",
-    "Développeur Angular",
-    "Développeur Python",
-    "Portfolio Développeur",
-    "Développeur Web",
-  ],
-  authors: [{ name: "John Doe", url: siteUrl }],
-  creator: "John Doe",
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.name, url: siteUrl }],
+  creator: siteConfig.name,
   openGraph: {
     type: "website",
     locale: "fr_FR",
     url: siteUrl,
-    title: "John Doe - Développeur Full Stack",
-    description:
-      "Développeur Full Stack spécialisé en Angular, Node.js, Python, Django et Flutter. Découvrez mes projets et compétences.",
-    siteName: "John Doe Portfolio",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    siteName: `${siteConfig.name} - Portfolio`,
     images: [
       {
-        url: "/og-image.png",
+        url: "/fatoma.jpg",
         width: 1200,
         height: 630,
-        alt: "John Doe - Développeur Full Stack",
+        alt: `${siteConfig.name} - Développeur Full Stack`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "John Doe - Développeur Full Stack",
-    description:
-      "Développeur Full Stack spécialisé en Angular, Node.js, Python, Django et Flutter.",
-    images: ["/og-image.png"],
-    creator: "@johndoe",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: ["/fatoma.jpg"],
   },
   robots: {
     index: true,
@@ -67,8 +53,8 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: "/fatoma.jpg",
+    apple: "/fatoma.jpg",
   },
 };
 
@@ -77,44 +63,39 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Person",
-      name: "John Doe",
+      name: siteConfig.name,
       url: siteUrl,
       jobTitle: "Développeur Full Stack",
-      description:
-        "Développeur Full Stack spécialisé en Angular, Node.js, Python, Django et Flutter.",
+      description: siteConfig.description,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Bamako",
+        streetAddress: "Magnambougou",
+        addressCountry: "ML",
+      },
+      email: siteConfig.contact.email,
+      telephone: siteConfig.contact.phone,
       sameAs: [
-        "https://github.com",
-        "https://linkedin.com",
-        "https://x.com",
+        siteConfig.links.github,
+        siteConfig.links.linkedin,
       ],
       knowsAbout: [
+        "Front-end",
+        "Back-end",
+        "Base de données",
+        "API REST",
         "JavaScript",
         "TypeScript",
-        "Angular",
-        "React",
-        "Node.js",
         "Python",
         "Django",
-        "Flutter",
-        "Dart",
+        "SQL",
       ],
     },
     {
       "@type": "WebSite",
       url: siteUrl,
-      name: "John Doe Portfolio",
-      description: "Portfolio de John Doe, Développeur Full Stack.",
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Accueil",
-          item: siteUrl,
-        },
-      ],
+      name: `${siteConfig.name} Portfolio`,
+      description: siteConfig.description,
     },
   ],
 };

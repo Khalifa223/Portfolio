@@ -20,30 +20,30 @@ export interface Service {
 export const services: Service[] = [
   {
     id: "1",
-    title: "Développement Frontend",
+    title: "Développement Front-end",
     description:
-      "Création d'interfaces web modernes, responsives et accessibles avec Angular, React et les dernières technologies CSS. Expérience utilisateur optimale sur tous les appareils.",
+      "Création d'interfaces web modernes, réactives et accessibles avec HTML5, CSS3, JavaScript et TypeScript. Expérience utilisateur optimale sur tous les appareils.",
     icon: Globe,
   },
   {
     id: "2",
-    title: "Développement Backend",
+    title: "Développement Back-end",
     description:
-      "Conception d'APIs robustes, sécurisées et évolutives avec Node.js, Python et Django. Architecture pensée pour la performance et la maintenabilité à long terme.",
+      "Conception d'architectures serveur robustes, sécurisées et évolutives avec Python (Django), Node.js et Java. Architecture pensée pour la performance et la maintenabilité à long terme.",
     icon: Server,
   },
   {
     id: "3",
-    title: "Développement Mobile Flutter",
+    title: "Conception & Modélisation de Données",
     description:
-      "Applications iOS et Android performantes et élégantes avec Flutter et Dart. Un seul codebase pour les deux plateformes avec une expérience native.",
+      "Structuration, conception relationnelle (SQL, PostgreSQL, MySQL) et sécurisation des bases de données d'entreprise avec requêtes optimisées.",
     icon: Smartphone,
   },
   {
     id: "4",
-    title: "Création d'API REST",
+    title: "Création d'APIs RESTful",
     description:
-      "Conception et développement d'APIs RESTful conformes aux standards OpenAPI. Documentation Swagger, authentification JWT et tests automatisés inclus.",
+      "Conception et développement d'APIs RESTful conformes aux standards OpenAPI. Documentation interactive Swagger, authentification JWT et sécurisation des flux.",
     icon: Webhook,
   },
   {
@@ -55,28 +55,28 @@ export const services: Service[] = [
   },
   {
     id: "6",
-    title: "Maintenance applicative",
+    title: "Maintenance & Évolution Applicative",
     description:
       "Suivi, correction de bugs, mises à jour de sécurité et évolution continue de vos applications existantes. Monitoring proactif et support technique réactif.",
     icon: Wrench,
   },
   {
     id: "7",
-    title: "Optimisation des performances",
+    title: "Optimisation des Performances",
     description:
-      "Audit et amélioration des performances web et mobile : temps de chargement, Core Web Vitals, SEO technique. Résultats mesurables et durables.",
+      "Audit et amélioration des performances web : temps de chargement, accessibilité, SEO technique et bonnes pratiques logicielles. Résultats mesurables et durables.",
     icon: Zap,
   },
   {
     id: "8",
-    title: "Refonte de sites web",
+    title: "Refonte de Sites Web",
     description:
-      "Modernisation de sites web existants avec les technologies actuelles. Migration technique, redesign UI/UX et amélioration de l'architecture globale.",
+      "Modernisation de sites web existants avec les technologies actuelles. Migration technique, refonte UI/UX et amélioration de l'architecture globale.",
     icon: RefreshCw,
   },
   {
     id: "9",
-    title: "Conseil technique",
+    title: "Conseil & Accompagnement Technique",
     description:
       "Accompagnement stratégique sur les choix technologiques, l'architecture logicielle et les bonnes pratiques. Audits de code et recommandations personnalisées.",
     icon: MessageSquareCode,

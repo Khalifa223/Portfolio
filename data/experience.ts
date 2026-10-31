@@ -11,42 +11,22 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     id: "1",
-    role: "Développeur Full Stack Senior",
-    company: "TechCorp",
-    period: "2022 - Présent",
+    role: "Développeur Web",
+    company: "NG System",
+    period: "Novembre 2024 - Février 2025",
     description:
-      "Conception et développement d'applications SaaS B2B à forte charge. Migration de l'architecture monolithique vers des microservices, amélioration des performances de 40% et mise en place de pipelines CI/CD automatisés.",
-    technologies: ["Angular", "Node.js", "Python", "Django", "PostgreSQL", "Docker"],
+      "Conception et développement d'une application web pour la gestion des données. Mise en place de l'architecture applicative, conception des composants front-end, sécurisation des flux de données et intégration des points de terminaison API.",
+    technologies: ["Front-end", "Back-end", "Base de données", "API REST", "Application Web"],
     type: "work",
   },
   {
     id: "2",
-    role: "Développeur Frontend",
-    company: "Agence Digitale XYZ",
-    period: "2020 - 2022",
+    role: "Développeur Web",
+    company: "Telnet Africa",
+    period: "Juillet - Octobre 2024",
     description:
-      "Création d'interfaces utilisateurs dynamiques et responsives pour des clients de divers secteurs. Optimisation SEO, accessibilité WCAG 2.1 et intégration de systèmes de design réutilisables.",
-    technologies: ["Angular", "TypeScript", "Tailwind CSS", "REST API", "Figma"],
+      "Conception et développement d'une application web pour la gestion des finances personnelles. Élaboration des interfaces utilisateur intuitives, modélisation des schémas de données financières et intégration de tableaux de bord interactifs.",
+    technologies: ["Front-end", "Back-end", "API", "Base de données", "Application Finance"],
     type: "work",
-  },
-  {
-    id: "3",
-    role: "Développeur Mobile Freelance",
-    company: "Divers Clients",
-    period: "2019 - 2020",
-    description:
-      "Développement d'applications mobiles iOS et Android sur mesure avec Flutter. Publication sur les stores, intégration d'APIs tierces et accompagnement client de la conception à la livraison.",
-    technologies: ["Flutter", "Dart", "Firebase", "REST API", "Google Maps API"],
-    type: "freelance",
-  },
-  {
-    id: "4",
-    role: "Stagiaire Développeur Backend",
-    company: "StartUp Innovation",
-    period: "2018 - 2019",
-    description:
-      "Participation au développement d'une API REST avec Django REST Framework. Implémentation de l'authentification JWT, écriture de tests unitaires et mise en place de la documentation Swagger.",
-    technologies: ["Python", "Django", "Django REST Framework", "PostgreSQL", "Git"],
-    type: "internship",
   },
 ];

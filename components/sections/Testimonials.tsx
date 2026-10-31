@@ -20,18 +20,19 @@ export function Testimonials() {
   );
 
   return (
-    <section className="py-24 bg-muted/30 overflow-hidden">
-      <div className="container mx-auto px-4 md:px-8">
+    <section className="py-24 relative overflow-hidden bg-muted/20">
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
         <SectionHeading
-          title="Témoignages"
-          subtitle="Ce que mes clients et collaborateurs disent de mon travail."
+          eyebrow="Témoignages"
+          title="Retours de Collaborateurs & Partenaires"
+          subtitle="Ce que mes collègues et responsables disent de ma rigueur et de la qualité de mes livrables."
         />
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5 }}
           className="max-w-4xl mx-auto"
         >
           <Carousel
@@ -43,48 +44,47 @@ export function Testimonials() {
             <CarouselContent>
               {testimonials.map((testimonial) => (
                 <CarouselItem key={testimonial.id}>
-                  <div className="p-2 md:p-6">
-                    <div className="relative p-8 md:p-10 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm shadow-sm hover:shadow-md transition-shadow">
-                      <Quote className="absolute top-6 left-6 w-10 h-10 text-primary/10" />
+                  <div className="p-3 sm:p-6">
+                    <div className="relative p-8 sm:p-12 rounded-3xl border border-white/10 bg-card/60 backdrop-blur-xl shadow-2xl text-center">
+                      <Quote className="absolute top-6 left-8 w-12 h-12 text-amber-500/10 pointer-events-none" />
 
-                      <div className="flex gap-1 mb-6 justify-center">
+                      {/* Golden Stars */}
+                      <div className="flex gap-1.5 mb-6 justify-center">
                         {[...Array(testimonial.rating || 5)].map((_, i) => (
                           <Star
                             key={i}
-                            className="w-5 h-5 fill-amber-400 text-amber-400"
+                            className="w-4 h-4 fill-amber-400 text-amber-400 filter drop-shadow-[0_0_6px_rgba(245,158,11,0.4)]"
                           />
                         ))}
                       </div>
 
-                      <p className="text-lg md:text-xl text-center leading-relaxed mb-8 text-foreground/90 italic">
+                      <p className="text-base sm:text-lg md:text-xl text-foreground font-medium leading-relaxed mb-8 italic max-w-2xl mx-auto">
                         &ldquo;{testimonial.content}&rdquo;
                       </p>
 
-                      <div className="flex flex-col items-center">
-                        <div className="w-16 h-16 rounded-full overflow-hidden mb-4 border-2 border-primary/20 shadow-lg shadow-primary/10">
-                          <img
-                            src={testimonial.avatar}
-                            alt={testimonial.name}
-                            className="w-full h-full object-cover"
-                            loading="lazy"
-                          />
+                      <div className="flex items-center justify-center gap-3">
+                        <img
+                          src={testimonial.avatar}
+                          alt={testimonial.name}
+                          className="w-12 h-12 rounded-full object-cover border-2 border-amber-500/40 shadow-md"
+                          loading="lazy"
+                        />
+                        <div className="text-left">
+                          <h4 className="font-bold text-sm text-foreground">
+                            {testimonial.name}
+                          </h4>
+                          <p className="text-xs text-muted-foreground">
+                            {testimonial.role} • <span className="text-amber-400 font-medium">{testimonial.company}</span>
+                          </p>
                         </div>
-                        <h4 className="font-bold text-lg">
-                          {testimonial.name}
-                        </h4>
-                        <p className="text-muted-foreground text-sm">
-                          {testimonial.role}, {testimonial.company}
-                        </p>
                       </div>
                     </div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center mt-8 gap-4">
-              <CarouselPrevious className="static translate-y-0 bg-card border-border/50 hover:bg-primary hover:text-white hover:border-primary" />
-              <CarouselNext className="static translate-y-0 bg-card border-border/50 hover:bg-primary hover:text-white hover:border-primary" />
-            </div>
+            <CarouselPrevious className="hidden md:flex -left-6 bg-card/80 border-white/10 text-foreground hover:bg-amber-500 hover:text-slate-950 transition-colors" />
+            <CarouselNext className="hidden md:flex -right-6 bg-card/80 border-white/10 text-foreground hover:bg-amber-500 hover:text-slate-950 transition-colors" />
           </Carousel>
         </motion.div>
       </div>

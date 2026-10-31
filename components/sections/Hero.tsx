@@ -2,166 +2,194 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Download, ArrowRight, ChevronDown } from "lucide-react";
+import { Download, ArrowRight, MapPin, Sparkles, Star, Code2, Database, ShieldCheck } from "lucide-react";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { Particles } from "@/components/ui/particles";
+import { siteConfig } from "@/data/siteConfig";
 
 export function Hero() {
   const typedText = useTypewriter(
-    ["Frontend", "Backend", "Mobile", "API REST"],
-    120,
-    80,
-    2500
+    ["Front-end Réactif", "Back-end Scalable", "Bases de Données SQL", "Architecture API REST"],
+    110,
+    70,
+    2400
   );
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden"
     >
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:32px_32px]" />
+      {/* Background Gradients */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.12),transparent)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_80%_at_80%_50%,rgba(139,92,246,0.06),transparent)]" />
+      {/* Luxury ambient spotlights */}
+      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-b from-amber-500/15 via-amber-500/5 to-transparent blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/3 -left-48 w-96 h-96 bg-blue-600/10 blur-[130px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-10 -right-48 w-96 h-96 bg-amber-500/10 blur-[130px] rounded-full pointer-events-none" />
 
       <Particles />
 
       <div className="container relative mx-auto px-4 md:px-8 z-10 flex flex-col items-center text-center">
+        {/* Status radar pill */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-xs md:text-sm font-medium bg-card/70 border border-white/10 backdrop-blur-xl shadow-lg shadow-black/20">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            </span>
+            <span className="text-muted-foreground flex items-center gap-1.5">
+              <MapPin className="w-3.5 h-3.5 text-amber-500" />
+              {siteConfig.contact.location}
+            </span>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <span className="text-foreground font-semibold text-xs">Disponible pour projets</span>
+          </div>
+        </motion.div>
+
+        {/* Profile Avatar with Luxury Multi-Ring Frame */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-8 relative"
         >
-          <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/20 p-1 bg-card shadow-xl shadow-primary/10">
-            <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop"
-              alt="Photo de profil"
-              className="w-full h-full object-cover rounded-full"
-              loading="eager"
-            />
+          {/* Ambient Glow */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-amber-500 to-amber-200 blur-xl opacity-30 animate-pulse" />
+
+          {/* Golden Ring Frame */}
+          <div className="relative w-36 h-36 md:w-44 md:h-44 rounded-full p-1 bg-gradient-to-tr from-amber-500 via-amber-200 to-amber-600 shadow-2xl shadow-amber-500/20">
+            <div className="w-full h-full rounded-full overflow-hidden bg-card p-1">
+              <img
+                src="/fatoma.jpg"
+                alt="Fatoma N’DAOU"
+                className="w-full h-full object-cover rounded-full transition-transform duration-500 hover:scale-105"
+                loading="eager"
+              />
+            </div>
           </div>
+
+          {/* Floating Trust Badge */}
           <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="absolute -bottom-2 -right-2 text-4xl select-none"
-            aria-hidden="true"
+            animate={{ y: [0, -5, 0] }}
+            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+            className="absolute -bottom-2 -right-3 px-3 py-1 rounded-full bg-card/90 border border-amber-500/30 backdrop-blur-md shadow-xl flex items-center gap-1.5"
           >
-            👋
+            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <span className="text-[11px] font-bold text-foreground">Full Stack 5★</span>
           </motion.div>
         </motion.div>
 
+        {/* Headline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
+          transition={{ delay: 0.25, duration: 0.6 }}
+          className="max-w-3xl"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20 mb-6">
-            Disponible pour des missions freelance
+          <span className="text-sm md:text-base font-semibold tracking-widest uppercase text-muted-foreground mb-3 block">
+            Bonjour & Bienvenue, je suis
           </span>
+
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4 text-foreground">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500 drop-shadow-sm">
+              {siteConfig.name}
+            </span>
+          </h1>
+
+          <div className="text-xl sm:text-2xl md:text-3xl font-semibold text-foreground/90 mb-5">
+            Développeur Full Stack Web & Solutions de Données
+          </div>
+
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-6">
+            Passionné et polyvalent, j&apos;excelle dans la transformation d&apos;idées
+            en applications web fluides, performantes et sécurisées qui répondent avec précision
+            aux enjeux métiers.
+          </p>
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-6"
-        >
-          Bonjour, je suis{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">
-            Développeur
-          </span>
-          <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">
-            Full Stack
-          </span>
-          <span className="text-muted-foreground">.</span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-4 leading-relaxed"
-        >
-          Je conçois des applications web et mobiles modernes, performantes,
-          sécurisées et évolutives.
-        </motion.p>
-
+        {/* Dynamic Typewriter Pill */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="text-xl md:text-2xl font-semibold mb-10 h-8"
+          transition={{ delay: 0.45, duration: 0.6 }}
+          className="mb-10 inline-flex items-center gap-2 px-5 py-2 rounded-2xl bg-card/60 border border-white/10 backdrop-blur-xl shadow-lg"
         >
-          <span className="text-primary">Spécialisé en </span>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">
+          <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
+            Expertise :
+          </span>
+          <span className="text-sm sm:text-base font-bold text-amber-400 font-mono">
             {typedText}
           </span>
           <motion.span
             animate={{ opacity: [1, 0] }}
-            transition={{ repeat: Infinity, duration: 0.8 }}
-            className="inline-block w-0.5 h-6 bg-primary ml-1 align-middle"
+            transition={{ repeat: Infinity, duration: 0.7 }}
+            className="w-1.5 h-4 bg-amber-500 rounded-sm"
           />
         </motion.div>
 
+        {/* Luxury CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center"
+          transition={{ delay: 0.6, duration: 0.6 }}
+          className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto justify-center mb-16"
         >
           <Link
             href="#projects"
-            className="group inline-flex items-center justify-center h-12 px-8 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-medium text-base transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:scale-105"
+            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 font-bold text-sm shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.03] transition-all duration-300"
           >
-            Voir mes projets
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <span>Découvrir mes projets</span>
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
-          <Link
-            href="#contact"
-            className="inline-flex items-center justify-center h-12 px-8 rounded-full border border-border bg-background/80 backdrop-blur-sm hover:bg-muted font-medium text-base transition-all duration-300 hover:scale-105"
+
+          <a
+            href="/cv.pdf"
+            target="_blank"
+            download
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full border border-white/10 bg-card/60 backdrop-blur-xl hover:bg-card/90 hover:border-amber-500/40 text-foreground font-semibold text-sm transition-all duration-300 hover:scale-[1.03]"
           >
-            Me contacter
-          </Link>
+            <Download className="h-4 w-4 text-amber-400" />
+            <span>Télécharger mon CV</span>
+          </a>
         </motion.div>
 
+        {/* Executive Highlights Bar (CV Pillars) */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.6 }}
-          className="flex flex-wrap gap-3 justify-center mt-12"
+          transition={{ delay: 0.75, duration: 0.6 }}
+          className="w-full max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4"
         >
-          {["Frontend", "Backend", "Mobile", "API REST"].map((tag, i) => (
-            <motion.span
-              key={tag}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1 + i * 0.1, duration: 0.3 }}
-              className="px-4 py-1.5 rounded-full text-sm font-medium bg-card/80 backdrop-blur-sm text-muted-foreground border border-border/50 hover:border-primary/50 hover:text-primary transition-colors cursor-default"
+          {[
+            { label: "Front-end", note: "5/5 Étoiles", icon: <Code2 className="w-4 h-4 text-amber-400" /> },
+            { label: "Back-end", note: "4/5 Étoiles", icon: <ShieldCheck className="w-4 h-4 text-blue-400" /> },
+            { label: "Base de données", note: "4/5 Étoiles", icon: <Database className="w-4 h-4 text-emerald-400" /> },
+            { label: "Architecture API", note: "4/5 Étoiles", icon: <Sparkles className="w-4 h-4 text-indigo-400" /> },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="p-3.5 rounded-2xl bg-card/40 border border-white/5 backdrop-blur-md hover:border-amber-500/20 transition-all duration-300 text-left flex items-center gap-3"
             >
-              {tag}
-            </motion.span>
+              <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                {item.icon}
+              </div>
+              <div>
+                <div className="text-xs font-semibold text-foreground">{item.label}</div>
+                <div className="text-[11px] text-amber-400/90 font-mono flex items-center gap-1">
+                  <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+                  {item.note}
+                </div>
+              </div>
+            </div>
           ))}
         </motion.div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground"
-      >
-        <span className="text-xs uppercase tracking-[0.2em] font-medium">
-          Défiler
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-        >
-          <ChevronDown className="w-5 h-5" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

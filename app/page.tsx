@@ -9,7 +9,6 @@ import { Projects } from "@/components/sections/Projects";
 import { Experience } from "@/components/sections/Experience";
 import { Stats } from "@/components/sections/Stats";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { Blog } from "@/components/sections/Blog";
 import { FAQ } from "@/components/sections/FAQ";
 import { Contact } from "@/components/sections/Contact";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
@@ -32,7 +31,6 @@ export default function Home() {
         <Projects />
         <Experience />
         <Testimonials />
-        <Blog />
         <FAQ />
         <Contact />
       </main>
