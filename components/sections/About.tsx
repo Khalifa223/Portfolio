@@ -17,7 +17,6 @@ import {
 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { siteConfig } from "@/data/siteConfig";
-import { Icons } from "@/components/ui/icons";
 
 const corePillars = [
   {
@@ -124,17 +123,6 @@ export function About() {
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span>Prêt pour missions en entreprise & remote</span>
-                </div>
-                <div className="pt-1">
-                  <a
-                    href={siteConfig.links.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-semibold text-sky-400 hover:text-sky-300 transition-colors"
-                  >
-                    <Icons.linkedin className="w-3.5 h-3.5" />
-                    <span>linkedin.com/in/fatoma-n-daou</span>
-                  </a>
                 </div>
               </div>
             </div>
