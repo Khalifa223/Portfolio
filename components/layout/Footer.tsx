@@ -7,11 +7,10 @@ import { Icons } from "@/components/ui/icons";
 
 const footerNavLinks = [
   { href: "#hero", label: "Accueil" },
-  { href: "#about", label: "À propos" },
-  { href: "#skills", label: "Compétences" },
-  { href: "#services", label: "Services" },
-  { href: "#projects", label: "Projets" },
-  { href: "#experience", label: "Parcours" },
+  { href: "#about", label: "Démarche" },
+  { href: "#skills", label: "Expertise" },
+  { href: "#services", label: "Solutions" },
+  { href: "#projects", label: "Réalisations" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -39,31 +38,32 @@ export function Footer() {
   };
 
   return (
-    <footer className="border-t border-white/10 bg-card/40 backdrop-blur-xl relative">
-      <div className="container mx-auto px-4 md:px-8 py-14">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-white/5">
+    <footer className="border-t border-white/[0.08] bg-[#090a0d] relative">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 py-16 max-w-7xl">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-white/[0.06]">
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <Link
               href="/"
-              className="font-bold text-xl tracking-tight text-foreground flex items-center gap-1.5 mb-2 group"
+              className="flex items-center gap-2 mb-2 group"
             >
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shadow-sm shadow-amber-400 group-hover:scale-125 transition-transform" />
-              <span>{siteConfig.name.split(" ")[0]}</span>
-              <span className="text-amber-500 font-semibold">.dev</span>
+              <span className="w-2 h-2 rounded-full bg-[#d4af37]" />
+              <span className="font-editorial text-2xl tracking-wider uppercase font-semibold text-foreground group-hover:text-[#d4af37] transition-colors">
+                Fatoma N’Daou
+              </span>
             </Link>
-            <p className="text-xs text-muted-foreground max-w-sm">
-              Développeur Full Stack Web & Solutions de Données basé à Bamako (Magnambougou).
+            <p className="text-xs text-muted-foreground font-light max-w-sm">
+              Ingénieur en Génie Informatique & Développeur Full Stack · Structurer. Sécuriser. Sublimer.
             </p>
           </div>
 
           {/* Nav Links */}
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="flex flex-wrap justify-center gap-1.5 sm:gap-3">
             {footerNavLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-3 py-1.5 rounded-full text-xs text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
+                className="px-3 py-1.5 rounded-full text-xs tracking-wider uppercase text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors font-medium"
               >
                 {link.label}
               </Link>
@@ -78,7 +78,7 @@ export function Footer() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:text-amber-400 hover:border-amber-500/40 hover:scale-110 transition-all"
+                className="w-9 h-9 rounded-full bg-white/[0.03] border border-white/[0.08] flex items-center justify-center text-muted-foreground hover:text-[#d4af37] hover:border-[#d4af37]/40 transition-all"
                 aria-label={link.label}
               >
                 {link.icon}
@@ -87,7 +87,7 @@ export function Footer() {
 
             <button
               onClick={scrollToTop}
-              className="w-9 h-9 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 hover:bg-amber-500 hover:text-slate-950 hover:scale-110 transition-all ml-1"
+              className="w-9 h-9 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/30 flex items-center justify-center text-[#d4af37] hover:bg-[#d4af37] hover:text-[#090a0d] transition-all ml-1"
               title="Retour en haut"
               aria-label="Retour en haut"
             >
@@ -97,13 +97,13 @@ export function Footer() {
         </div>
 
         {/* Bottom copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground text-center sm:text-left">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground text-center sm:text-left font-light">
           <div>
             © {new Date().getFullYear()} {siteConfig.name}. Tous droits réservés.
           </div>
-          <div className="flex items-center gap-1.5 text-xs">
-            <span>Conçu avec rigueur & passion</span>
-            <span className="text-amber-500">•</span>
+          <div className="flex items-center gap-2 text-xs">
+            <span>Conçu avec rigueur & excellence technique</span>
+            <span className="text-[#d4af37]">•</span>
             <span>Bamako, Mali</span>
           </div>
         </div>

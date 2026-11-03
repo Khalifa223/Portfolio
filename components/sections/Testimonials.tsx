@@ -10,29 +10,29 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Star, Quote } from "lucide-react";
+import { Quote } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 export function Testimonials() {
   const plugin = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
+    Autoplay({ delay: 5500, stopOnInteraction: true })
   );
 
   return (
-    <section className="py-24 relative overflow-hidden bg-muted/20">
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
+    <section className="py-28 relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10 max-w-7xl">
         <SectionHeading
-          eyebrow="Témoignages"
-          title="Retours de Collaborateurs & Partenaires"
-          subtitle="Ce que mes collègues et responsables disent de ma rigueur et de la qualité de mes livrables."
+          eyebrow="Confiance & Témoignages"
+          title="Appréciations & Retours de Collaborateurs"
+          subtitle="La perspective de responsables techniques et partenaires sur la rigueur et l'engagement apportés."
         />
 
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto"
         >
           <Carousel
@@ -45,20 +45,10 @@ export function Testimonials() {
               {testimonials.map((testimonial) => (
                 <CarouselItem key={testimonial.id}>
                   <div className="p-3 sm:p-6">
-                    <div className="relative p-8 sm:p-12 rounded-3xl border border-white/10 bg-card/60 backdrop-blur-xl shadow-2xl text-center">
-                      <Quote className="absolute top-6 left-8 w-12 h-12 text-amber-500/10 pointer-events-none" />
+                    <div className="relative p-8 sm:p-14 rounded-3xl border border-white/[0.08] bg-[#111319]/80 backdrop-blur-xl text-center">
+                      <Quote className="absolute top-6 left-8 w-12 h-12 text-[#d4af37]/15 pointer-events-none" />
 
-                      {/* Golden Stars */}
-                      <div className="flex gap-1.5 mb-6 justify-center">
-                        {[...Array(testimonial.rating || 5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className="w-4 h-4 fill-amber-400 text-amber-400 filter drop-shadow-[0_0_6px_rgba(245,158,11,0.4)]"
-                          />
-                        ))}
-                      </div>
-
-                      <p className="text-base sm:text-lg md:text-xl text-foreground font-medium leading-relaxed mb-8 italic max-w-2xl mx-auto">
+                      <p className="font-editorial text-xl sm:text-2xl md:text-3xl text-foreground/95 font-light leading-relaxed mb-8 italic max-w-2xl mx-auto">
                         &ldquo;{testimonial.content}&rdquo;
                       </p>
 
@@ -66,15 +56,15 @@ export function Testimonials() {
                         <img
                           src={testimonial.avatar}
                           alt={testimonial.name}
-                          className="w-12 h-12 rounded-full object-cover border-2 border-amber-500/40 shadow-md"
+                          className="w-12 h-12 rounded-full object-cover border border-[#d4af37]/40 grayscale"
                           loading="lazy"
                         />
                         <div className="text-left">
-                          <h4 className="font-bold text-sm text-foreground">
+                          <h4 className="font-editorial text-lg font-medium text-foreground">
                             {testimonial.name}
                           </h4>
-                          <p className="text-xs text-muted-foreground">
-                            {testimonial.role} • <span className="text-amber-400 font-medium">{testimonial.company}</span>
+                          <p className="text-xs text-muted-foreground font-light">
+                            {testimonial.role} · <span className="text-[#d4af37] font-medium">{testimonial.company}</span>
                           </p>
                         </div>
                       </div>
@@ -83,8 +73,8 @@ export function Testimonials() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-6 bg-card/80 border-white/10 text-foreground hover:bg-amber-500 hover:text-slate-950 transition-colors" />
-            <CarouselNext className="hidden md:flex -right-6 bg-card/80 border-white/10 text-foreground hover:bg-amber-500 hover:text-slate-950 transition-colors" />
+            <CarouselPrevious className="hidden md:flex -left-5 bg-[#111319] border-white/[0.08] text-foreground hover:bg-[#d4af37] hover:text-[#090a0d] transition-colors" />
+            <CarouselNext className="hidden md:flex -right-5 bg-[#111319] border-white/[0.08] text-foreground hover:bg-[#d4af37] hover:text-[#090a0d] transition-colors" />
           </Carousel>
         </motion.div>
       </div>

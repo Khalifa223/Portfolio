@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
 
 interface SectionHeadingProps {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   eyebrow?: string;
   className?: string;
+  align?: "center" | "left";
 }
 
 export function SectionHeading({
@@ -15,35 +15,36 @@ export function SectionHeading({
   subtitle,
   eyebrow,
   className = "",
+  align = "center",
 }: SectionHeadingProps) {
+  const isLeft = align === "left";
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className={`text-center mb-16 max-w-3xl mx-auto ${className}`}
+      transition={{ duration: 0.6 }}
+      className={`mb-16 ${isLeft ? "text-left max-w-3xl" : "text-center max-w-3xl mx-auto"} ${className}`}
     >
       {eyebrow && (
-        <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold tracking-widest uppercase bg-amber-500/10 text-amber-400 border border-amber-500/20 mb-4 shadow-sm shadow-amber-500/10">
-          <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-          <span>{eyebrow}</span>
+        <div className={`inline-flex items-center gap-2 mb-4 ${isLeft ? "" : "justify-center"}`}>
+          <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37]" />
+          <span className="text-[11px] font-semibold tracking-[0.22em] uppercase text-[#d4af37]">
+            {eyebrow}
+          </span>
         </div>
       )}
 
-      <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-foreground">
+      <h2 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.15] mb-4">
         {title}
       </h2>
 
-      <div className="flex items-center justify-center gap-2 mb-5">
-        <div className="w-8 h-px bg-gradient-to-r from-transparent to-amber-500/60" />
-        <div className="w-2 h-2 rounded-full bg-amber-500 shadow-sm shadow-amber-400" />
-        <div className="w-8 h-px bg-gradient-to-l from-transparent to-amber-500/60" />
-      </div>
-
-      <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
-        {subtitle}
-      </p>
+      {subtitle && (
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed font-light">
+          {subtitle}
+        </p>
+      )}
     </motion.div>
   );
 }

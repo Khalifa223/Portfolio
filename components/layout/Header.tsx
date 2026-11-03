@@ -58,32 +58,33 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 pt-3 md:pt-4 px-4 sm:px-6">
       <div
-        className={`mx-auto max-w-5xl rounded-full transition-all duration-500 flex items-center justify-between px-4 sm:px-6 h-14 md:h-16 ${
+        className={`mx-auto max-w-5xl rounded-full transition-all duration-500 flex items-center justify-between px-5 sm:px-7 h-14 md:h-16 ${
           isScrolled
-            ? "bg-card/75 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/40"
-            : "bg-card/50 backdrop-blur-md border border-white/5 shadow-lg shadow-black/10"
+            ? "bg-[#111319]/85 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50"
+            : "bg-[#111319]/50 backdrop-blur-md border border-white/[0.06]"
         }`}
       >
         <Link
           href="/"
-          className="font-bold text-lg md:text-xl tracking-tight text-foreground flex items-center gap-1.5 group"
+          className="flex items-center gap-2 group"
         >
-          <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shadow-sm shadow-amber-400 group-hover:scale-125 transition-transform" />
-          <span>{siteConfig.name.split(" ")[0]}</span>
-          <span className="text-amber-500 font-semibold">.dev</span>
+          <span className="w-2 h-2 rounded-full bg-[#d4af37]" />
+          <span className="font-editorial text-lg tracking-[0.12em] uppercase font-semibold text-foreground group-hover:text-[#d4af37] transition-colors">
+            Fatoma N’Daou
+          </span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-1" role="navigation">
+        <nav className="hidden lg:flex items-center gap-1.5" role="navigation">
           {navLinks.map((link) => {
             const isActive = activeSection === link.href.replace("#", "");
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative px-3.5 py-1.5 text-xs xl:text-sm font-medium transition-colors rounded-full ${
+                className={`relative px-3.5 py-1.5 text-xs tracking-wider uppercase font-medium transition-colors rounded-full ${
                   isActive
-                    ? "text-amber-400"
+                    ? "text-[#d4af37]"
                     : "text-muted-foreground hover:text-foreground hover:bg-white/5"
                 }`}
               >
@@ -91,7 +92,7 @@ export function Header() {
                 {isActive && (
                   <motion.div
                     layoutId="activeSection"
-                    className="absolute inset-0 rounded-full bg-amber-500/10 border border-amber-500/20 shadow-sm shadow-amber-500/10"
+                    className="absolute inset-0 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/20"
                     transition={{ type: "spring", stiffness: 380, damping: 32 }}
                   />
                 )}
@@ -101,17 +102,14 @@ export function Header() {
         </nav>
 
         {/* Actions */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-3">
           <ThemeToggle />
 
           <a
-            href="/cv.pdf"
-            target="_blank"
-            download
-            className="hidden sm:inline-flex items-center justify-center gap-2 h-9 px-4 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 text-xs md:text-sm font-semibold shadow-md shadow-amber-500/20 hover:shadow-amber-500/40 hover:scale-[1.03] transition-all duration-300"
+            href="#contact"
+            className="hidden sm:inline-flex items-center justify-center h-9 px-4 rounded-full border border-[#d4af37]/40 bg-[#d4af37]/10 hover:bg-[#d4af37] text-[#d4af37] hover:text-[#090a0d] text-xs tracking-wider uppercase font-semibold transition-all duration-300"
           >
-            <Download className="h-3.5 w-3.5 stroke-[2.5]" />
-            <span>Mon CV</span>
+            Échanger
           </a>
 
           <button
@@ -143,7 +141,7 @@ export function Header() {
                   onClick={() => setIsMobileOpen(false)}
                   className={`px-4 py-2.5 text-sm font-medium rounded-xl transition-colors ${
                     activeSection === link.href.replace("#", "")
-                      ? "text-amber-400 bg-amber-500/10 border border-amber-500/20"
+                      ? "text-[#d4af37] bg-[#d4af37]/10 border border-[#d4af37]/20"
                       : "text-muted-foreground hover:text-foreground hover:bg-white/5"
                   }`}
                 >
@@ -157,10 +155,10 @@ export function Header() {
                   target="_blank"
                   download
                   onClick={() => setIsMobileOpen(false)}
-                  className="inline-flex items-center justify-center gap-2 h-11 px-5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-semibold text-sm shadow-lg shadow-amber-500/20"
+                  className="inline-flex items-center justify-center gap-2 h-11 px-5 rounded-full border border-[#d4af37]/40 bg-[#d4af37]/10 text-[#d4af37] font-medium text-sm tracking-wide"
                 >
                   <Download className="h-4 w-4" />
-                  Télécharger mon CV
+                  Consulter le CV (PDF)
                 </a>
               </div>
             </nav>

@@ -7,40 +7,44 @@ import { ArrowUpRight } from "lucide-react";
 
 export function Services() {
   return (
-    <section id="services" className="py-24 relative overflow-hidden">
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
+    <section id="services" className="py-28 relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10 max-w-7xl">
         <SectionHeading
-          eyebrow="Services"
-          title="Prestations & Solutions Logicielles"
-          subtitle="Des interventions ciblées ou complètes pour transformer vos ambitions en applications performantes."
+          eyebrow="Solutions & Engagements"
+          title="Offres & Interventions Logicielles"
+          subtitle="Des réponses architecturales adaptées aux exigences des entreprises et des plateformes en forte croissance."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {services.map((service, index) => {
             const Icon = service.icon;
+            const indexStr = (index + 1).toString().padStart(2, "0");
+
             return (
               <motion.div
                 key={service.id}
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.06 }}
-                className="group relative p-7 rounded-3xl border border-white/10 bg-card/50 backdrop-blur-xl hover:border-amber-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-black/40 hover:-translate-y-1 overflow-hidden flex flex-col justify-between"
+                transition={{ duration: 0.5, delay: index * 0.07 }}
+                className="group relative p-7 rounded-2xl border border-white/[0.08] bg-[#111319]/70 backdrop-blur-xl hover:border-[#d4af37]/40 transition-all duration-500 hover:-translate-y-1 overflow-hidden flex flex-col justify-between"
               >
-                {/* Subtle top glow line */}
-                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-amber-500/0 to-transparent group-hover:via-amber-500/50 transition-all duration-500" />
-
                 <div>
-                  <div className="w-13 h-13 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-amber-400 mb-5 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-slate-950 transition-all duration-300 shadow-md">
-                    <Icon className="w-6 h-6 stroke-[2]" />
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="font-editorial text-xl font-light text-[#d4af37]">
+                      {indexStr}
+                    </span>
+                    <div className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-[#d4af37] group-hover:scale-110 transition-transform">
+                      <Icon className="w-5 h-5" />
+                    </div>
                   </div>
 
-                  <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-amber-400 transition-colors flex items-center justify-between">
+                  <h3 className="font-editorial text-2xl font-medium text-foreground mb-3 group-hover:text-[#d4af37] transition-colors flex items-center justify-between">
                     <span>{service.title}</span>
-                    <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-amber-400 transition-colors opacity-0 group-hover:opacity-100" />
+                    <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-[#d4af37] transition-colors opacity-0 group-hover:opacity-100 shrink-0 ml-1" />
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-xs text-muted-foreground leading-relaxed font-light">
                     {service.description}
                   </p>
                 </div>

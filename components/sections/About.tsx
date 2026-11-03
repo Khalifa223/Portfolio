@@ -2,259 +2,227 @@
 
 import { motion } from "framer-motion";
 import {
-  Code2,
   GraduationCap,
-  Sparkles,
   MapPin,
   CheckCircle2,
-  Shield,
-  Zap,
-  Globe2,
-  Users2,
-  Layers,
-  Star,
   Quote,
+  Briefcase,
+  Compass,
+  Cpu,
+  Layers,
 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { siteConfig } from "@/data/siteConfig";
 
-const corePillars = [
+const methodSteps = [
   {
-    icon: <Code2 className="w-5 h-5 text-amber-400" />,
-    title: "Code Propre & Robuste",
-    desc: "Architecture modulaire, lisible, maintenable et testable.",
+    num: "01",
+    title: "Comprendre & Cadrer",
+    desc: "Analyse des objectifs stratégiques, modélisation des entités et choix rigoureux des technologies adaptées.",
+    icon: <Compass className="w-4 h-4 text-[#d4af37]" />,
   },
   {
-    icon: <Zap className="w-5 h-5 text-blue-400" />,
-    title: "Performance & Scalabilité",
-    desc: "Optimisation des temps de rendu et des requêtes serveur.",
+    num: "02",
+    title: "Architecturer & Sécuriser",
+    desc: "Conception de bases de données normalisées, APIs RESTful documentées et sécurisation des accès (JWT).",
+    icon: <Cpu className="w-4 h-4 text-[#d4af37]" />,
   },
   {
-    icon: <Shield className="w-5 h-5 text-emerald-400" />,
-    title: "Sécurité des Flux",
-    desc: "Authentification JWT, protection des données et validation.",
-  },
-  {
-    icon: <Users2 className="w-5 h-5 text-purple-400" />,
-    title: "Sens Métier & Écoute",
-    desc: "Compréhension fine des objectifs d'affaires et collaboration.",
+    num: "03",
+    title: "Concevoir & Pérenniser",
+    desc: "Développement d'interfaces ergonomiques, tests de performance et code modulaire pensé pour évoluer.",
+    icon: <Layers className="w-4 h-4 text-[#d4af37]" />,
   },
 ];
 
-const timeline = [
+const credentials = [
   {
     year: "2025",
-    title: "Diplômé en Génie Informatique",
-    place: "Institut des Sciences Appliquées (ISA)",
-    desc: "Licence d'ingénierie : architecture logicielle, bases de données, sécurité web.",
+    role: "Diplôme en Génie Informatique",
+    institution: "Institut des Sciences Appliquées (ISA) · Bamako",
+    detail: "Formation d'ingénierie : architecture logicielle, bases de données relationnelles, sécurité web.",
   },
   {
-    year: "2024 - 2025",
-    title: "Développeur Web",
-    place: "NG System",
-    desc: "Conception et développement d'une application web pour la gestion de données.",
+    year: "2024 — 2025",
+    role: "Développeur Web & Données",
+    institution: "NG System",
+    detail: "Conception et implémentation d'une plateforme de supervision et manipulation de flux de données.",
   },
   {
     year: "2024",
-    title: "Développeur Web",
-    place: "Telnet Africa",
-    desc: "Conception d'une application web de gestion des finances personnelles.",
-  },
-  {
-    year: "2020",
-    title: "Baccalauréat Sciences Physiques",
-    place: "Lycée Kankou Moussa",
-    desc: "Socle scientifique d'excellence, rigueur mathématique et analytique.",
+    role: "Développeur d'Applications",
+    institution: "Telnet Africa",
+    detail: "Développement full stack d'un système de suivi budgétaire et de modélisation financière.",
   },
 ];
 
 export function About() {
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
-
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
+    <section id="about" className="py-28 relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10 max-w-7xl">
         <SectionHeading
-          eyebrow="À propos"
-          title="Mon Profil & Ma Vision"
-          subtitle="Découvrez les fondations de mon parcours, mes convictions techniques et ma méthode de travail."
+          eyebrow="Vision & Démarche"
+          title="L'Ingénierie au Service de la Valeur"
+          subtitle="Allier rigueur scientifique, sens du détail et vision produit pour concevoir des systèmes pérennes."
         />
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-6xl mx-auto">
-          {/* Card 1: Executive Portrait & Quick Connect (4 cols) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Left Column: Portrait & Identity Profile */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="lg:col-span-4 rounded-3xl p-6 bg-card/50 border border-white/10 backdrop-blur-xl flex flex-col justify-between shadow-xl"
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5 p-7 sm:p-8 rounded-3xl bg-[#111319]/80 border border-white/[0.08] backdrop-blur-xl"
           >
-            <div>
-              <div className="relative rounded-2xl overflow-hidden aspect-square border border-white/10 p-1 bg-gradient-to-tr from-amber-500/20 to-white/5 mb-6 group">
-                <img
-                  src="/fatoma.jpg"
-                  alt="Fatoma N’DAOU"
-                  className="w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/10 text-xs font-semibold text-amber-400">
-                  Full Stack
-                </div>
-              </div>
-
-              <h3 className="text-2xl font-bold text-foreground mb-1">
-                {siteConfig.name}
-              </h3>
-              <p className="text-sm text-amber-400 font-medium mb-4">
-                Développeur Web & Architecte de Données
-              </p>
-
-              <div className="space-y-2.5 text-xs text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span>{siteConfig.contact.location}, Mali</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <GraduationCap className="w-4 h-4 text-blue-400 shrink-0" />
-                  <span>Diplômé de l&apos;ISA (Avril 2025)</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Prêt pour missions en entreprise & remote</span>
-                </div>
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/[0.08] mb-6">
+              <img
+                src="/fatoma.jpg"
+                alt="Fatoma N’DAOU"
+                className="w-full h-full object-cover grayscale contrast-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#111319] via-transparent to-transparent opacity-60" />
+              <div className="absolute bottom-3 left-3 text-[11px] tracking-widest uppercase font-semibold text-[#d4af37] px-3 py-1 rounded-full bg-[#111319]/90 border border-white/[0.08]">
+                Ingénieur Diplômé
               </div>
             </div>
 
-            {/* Languages Bar */}
-            <div className="mt-6 pt-5 border-t border-white/10">
-              <div className="flex items-center gap-2 mb-3">
-                <Globe2 className="w-4 h-4 text-amber-400" />
-                <span className="text-xs font-semibold uppercase tracking-wider text-foreground">
-                  Langues de travail
-                </span>
+            <h3 className="font-editorial text-3xl font-medium text-foreground mb-1">
+              {siteConfig.name}
+            </h3>
+            <p className="text-xs uppercase tracking-widest text-[#d4af37] font-semibold mb-6">
+              Ingénieur Logiciel & Architecte Web
+            </p>
+
+            <div className="space-y-3 text-xs text-muted-foreground font-light mb-8">
+              <div className="flex items-center gap-2.5">
+                <MapPin className="w-4 h-4 text-[#d4af37] shrink-0" />
+                <span>Basé à {siteConfig.contact.location} (Mobilité & Remote)</span>
               </div>
-              <div className="space-y-2">
-                <div>
-                  <div className="flex justify-between text-xs font-medium mb-1">
-                    <span>Français</span>
-                    <span className="text-amber-400 font-mono">Courant / Maternel (5/5)</span>
-                  </div>
-                  <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
-                    <div className="w-full h-full bg-gradient-to-r from-amber-500 to-amber-300 rounded-full" />
-                  </div>
+              <div className="flex items-center gap-2.5">
+                <GraduationCap className="w-4 h-4 text-[#d4af37] shrink-0" />
+                <span>Licence d&apos;Ingénierie en Génie Informatique (ISA)</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Disponible pour missions d&apos;ingénierie & conseil technique</span>
+              </div>
+            </div>
+
+            <div className="pt-6 border-t border-white/[0.08]">
+              <div className="text-[11px] uppercase tracking-widest text-muted-foreground font-semibold mb-3">
+                Langues de travail
+              </div>
+              <div className="grid grid-cols-2 gap-3 text-xs">
+                <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                  <div className="font-medium text-foreground">Français</div>
+                  <div className="text-[11px] text-muted-foreground font-light">Courant / Maternel</div>
                 </div>
-                <div>
-                  <div className="flex justify-between text-xs font-medium mb-1">
-                    <span>Anglais</span>
-                    <span className="text-amber-400 font-mono">Technique & Professionnel (4/5)</span>
-                  </div>
-                  <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
-                    <div className="w-[85%] h-full bg-gradient-to-r from-amber-500 to-amber-300 rounded-full" />
-                  </div>
+                <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                  <div className="font-medium text-foreground">Anglais</div>
+                  <div className="text-[11px] text-muted-foreground font-light">Technique & Opérationnel</div>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Column (8 cols): Philosophy, Journey & Pillars */}
-          <div className="lg:col-span-8 flex flex-col gap-6">
-            {/* Card 2: Executive Philosophy Quote */}
+          {/* Right Column: Editorial Manifesto + Method + Credentials */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
+            {/* Editorial Manifesto Quote */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-amber-500/10 via-card/60 to-card/40 border border-amber-500/20 backdrop-blur-xl relative shadow-xl"
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="p-8 sm:p-10 rounded-3xl bg-[#111319]/80 border border-white/[0.08] relative"
             >
-              <Quote className="absolute top-6 right-6 w-12 h-12 text-amber-500/15 pointer-events-none" />
+              <Quote className="absolute top-6 right-6 w-12 h-12 text-[#d4af37]/15 pointer-events-none" />
 
-              <div className="flex items-center gap-2 mb-3">
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
-                  Philosophie du profil
-                </span>
-              </div>
+              <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#d4af37] block mb-3">
+                Manifeste
+              </span>
 
-              <blockquote className="text-base sm:text-lg md:text-xl font-medium text-foreground leading-relaxed italic mb-4">
-                « Développeur Full Stack passionné et polyvalent, j&apos;excelle dans
-                la transformation d&apos;idées en applications pleinement
-                fonctionnelles, ergonomiques et conviviales. Doté d&apos;une solide
-                maîtrise du développement front-end et back-end, je me consacre à la
-                création de solutions performantes et évolutives qui offrent des
-                expériences utilisateur fluides et répondent parfaitement aux
-                objectifs métiers. »
+              <blockquote className="font-editorial text-2xl sm:text-3xl text-foreground font-light italic leading-snug mb-5">
+                « Un code robuste ne se mesure pas au volume des lignes écrites, mais à la clarté avec laquelle il résout un problème métier complexe et résiste à l’épreuve du temps. »
               </blockquote>
 
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Fort de mes expériences chez <strong>NG System</strong> et{" "}
-                <strong>Telnet Africa</strong>, j&apos;aborde chaque projet avec
-                une vision 360° : de la modélisation de données à l&apos;architecture d&apos;APIs sécurisées
-                jusqu&apos;à l&apos;ergonomie finale de l&apos;interface.
+              <p className="text-xs sm:text-sm text-muted-foreground font-light leading-relaxed">
+                Formé à l’analyse rigoureuse et fort de réalisations en entreprise chez <strong>NG System</strong> et <strong>Telnet Africa</strong>, j&apos;envisage chaque mission comme un partenariat d&apos;ingénierie : comprendre les enjeux de votre organisation avant d&apos;écrire la moindre ligne de code.
               </p>
             </motion.div>
 
-            {/* Card 3: 4 Core Pillars Grid */}
+            {/* 3 Step Method */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="p-7 sm:p-8 rounded-3xl bg-[#111319]/60 border border-white/[0.08]"
             >
-              {corePillars.map((pillar, idx) => (
-                <div
-                  key={idx}
-                  className="p-5 rounded-2xl bg-card/40 border border-white/5 backdrop-blur-md hover:border-amber-500/30 transition-all duration-300 group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                    {pillar.icon}
-                  </div>
-                  <h4 className="text-sm font-bold text-foreground mb-1">
-                    {pillar.title}
-                  </h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {pillar.desc}
-                  </p>
-                </div>
-              ))}
-            </motion.div>
-
-            {/* Card 4: Trajectory timeline snippet */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="p-6 rounded-3xl bg-card/40 border border-white/5 backdrop-blur-md"
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <Layers className="w-4 h-4 text-amber-400" />
-                <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                  Étapes clés du parcours
+              <div className="flex items-center gap-2 mb-6">
+                <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-foreground">
+                  Méthode de travail
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {timeline.map((item, index) => (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {methodSteps.map((step) => (
                   <div
-                    key={index}
-                    className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors"
+                    key={step.num}
+                    className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-[#d4af37]/30 transition-all group"
                   >
-                    <div className="flex items-center justify-between gap-2 mb-1">
-                      <span className="text-xs font-bold text-foreground">
-                        {item.title}
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-editorial text-lg text-[#d4af37] font-light">
+                        {step.num}
                       </span>
-                      <span className="text-[10px] font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
-                        {item.year}
+                      {step.icon}
+                    </div>
+                    <div className="text-sm font-medium text-foreground mb-1 group-hover:text-[#d4af37] transition-colors">
+                      {step.title}
+                    </div>
+                    <p className="text-[11px] text-muted-foreground font-light leading-relaxed">
+                      {step.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Credentials Timeline */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="p-7 sm:p-8 rounded-3xl bg-[#111319]/60 border border-white/[0.08]"
+            >
+              <div className="flex items-center gap-2 mb-6">
+                <Briefcase className="w-4 h-4 text-[#d4af37]" />
+                <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-foreground">
+                  Parcours Académique & Expériences
+                </span>
+              </div>
+
+              <div className="space-y-4">
+                {credentials.map((cred, idx) => (
+                  <div
+                    key={idx}
+                    className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/10 transition-colors"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+                      <div className="text-sm font-semibold text-foreground">
+                        {cred.role}
+                      </div>
+                      <span className="text-[10px] font-mono text-[#d4af37] px-2.5 py-0.5 rounded-full bg-[#d4af37]/10 w-fit">
+                        {cred.year}
                       </span>
                     </div>
-                    <div className="text-[11px] text-muted-foreground font-medium mb-1">
-                      {item.place}
+                    <div className="text-xs text-[#d4af37] font-medium mb-1">
+                      {cred.institution}
                     </div>
-                    <p className="text-[11px] text-muted-foreground/80 leading-normal">
-                      {item.desc}
+                    <p className="text-xs text-muted-foreground font-light leading-relaxed">
+                      {cred.detail}
                     </p>
                   </div>
                 ))}
